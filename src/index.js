@@ -3,12 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import createHistory from 'history/createBrowserHistory';
 import { Route, Switch, Router } from 'react-router-dom';
-import Home from './containers/Home';
+import Home from 'containers/Home';
+import Login from 'containers/Login';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <Router history={createHistory()}>
     <Switch>
+      <Route path="/Login" component={Login} />
       <Route path="/" component={Home} />
     </Switch>
   </Router>,
