@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ArticleTitle render successfully 1`] = `
+<div
+  className="sc-bdVaJa bPGLpq"
+>
+  <span
+    className="sc-bwzfXH dNCrpK"
+  >
+    A title
+  </span>
+  <span
+    className="sc-htpNat cUROdq"
+  >
+    2018/10/15 17:13:00
+  </span>
+</div>
+`;

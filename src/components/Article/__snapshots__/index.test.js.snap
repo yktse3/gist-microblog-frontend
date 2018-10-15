@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Article render successfully 1`] = `
+<div
+  className="sc-bxivhb kjsGUP"
+>
+  <div
+    className="sc-bdVaJa bPGLpq"
+  >
+    <span
+      className="sc-bwzfXH dNCrpK"
+    >
+      A title
+    </span>
+    <span
+      className="sc-htpNat cUROdq"
+    >
+      2018/10/15 17:13:00
+    </span>
+  </div>
+  <span
+    className="sc-ifAKCX duHYHE"
+  >
+    Content
+  </span>
+  <span
+    className="sc-EHOje OnLaj"
+  >
+    1 comments
+  </span>
+</div>
+`;
