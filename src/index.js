@@ -7,6 +7,7 @@ import createHistory from 'history/createBrowserHistory';
 import { Route, Switch } from 'react-router-dom';
 import Home from 'containers/Home';
 import Login from 'containers/Login';
+import Authenticate from 'containers/Authenticate';
 import configureStore from 'store/configureStore';
 import * as serviceWorker from './serviceWorker';
 
@@ -18,6 +19,7 @@ ReactDOM.render(
     <ConnectedRouter history={history}>
       <Switch>
         <Route path="/Login" component={Login} />
+        <Route path="/callback" component={Authenticate} />
         <Route path="/" component={Home} />
       </Switch>
     </ConnectedRouter>

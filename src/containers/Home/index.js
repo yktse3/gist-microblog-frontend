@@ -1,7 +1,22 @@
 import React, { Component } from 'react';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
 import Article from 'components/Article';
+import { string } from 'prop-types';
 
 class Home extends Component {
+  static propTypes = {
+    accessToken: string,
+  };
+
+  static defaultProps = {
+    accessToken: null,
+  };
+
+  componentDidMount() {
+    console.log(this.props.accessToken);
+  }
+
   render() {
     return (
       <Article
@@ -14,4 +29,10 @@ class Home extends Component {
   }
 }
 
-export default Home;
+const mapStateToProps = state => ({
+  accessToken: state.auth.accessToken,
+});
+
+export default compose(
+  connect(mapStateToProps, {}),
+)(Home);

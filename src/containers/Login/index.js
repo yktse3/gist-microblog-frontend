@@ -1,10 +1,19 @@
 import React, { Component } from 'react';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
 import GitHubLogin from 'react-github-login';
+import { func } from 'prop-types';
 import './styles.css';
+import { getAccessTokenRequest } from 'store/actions/auth';
 import { Container } from './styles';
 
 class Login extends Component {
-  onSuccess = response => console.log(response);
+  static propTypes = {
+    getAccessTokenRequest: func.isRequired,
+  };
+
+  onSuccess = response => this.props.getAccessTokenRequest(response);
+
   onFailure = response => console.error(response);
 
   render() {
@@ -15,7 +24,7 @@ class Login extends Component {
           onSuccess={this.onSuccess}
           onFailure={this.onFailure}
           scope="gist"
-          redirectUri="http://localhost:3000/"
+          redirectUri="http://localhost:3000/callback"
           className="loginBtn"
         />
       </Container>
@@ -23,4 +32,8 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default compose(
+  connect(null, {
+    getAccessTokenRequest,
+  }),
+)(Login);
