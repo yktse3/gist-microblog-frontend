@@ -4,14 +4,18 @@ import {
   int,
   arrayOf,
   string,
+  func,
 } from 'prop-types';
 import Article from 'components/Article';
+import { noop } from 'redux-saga/utils';
 import {
   ArticleContainer,
 } from './styles';
 
 const ArticleList = ({
   articles,
+  onCommentClicked,
+  comments,
 }) => (
   articles.map((article) => {
     return (
@@ -25,7 +29,10 @@ const ArticleList = ({
           content={article.content}
           numOfComment={article.comments}
           key={article.id}
+          articleID={article.id}
           commentURL={article.comments_url}
+          onCommentClicked={onCommentClicked}
+          comments={comments[article.id]}
         />
       </ArticleContainer>
     );
@@ -43,10 +50,21 @@ ArticleList.propTypes = {
       content: string,
     }),
   ),
+  onCommentClicked: func,
+  comments: shape(
+    arrayOf(
+      shape({
+        id: int,
+        userID: string,
+        content: string,
+      }),
+    ),
+  ).isRequired,
 };
 
 ArticleList.defaultProps = {
   articles: [],
+  onCommentClicked: noop,
 };
 
 export default ArticleList;

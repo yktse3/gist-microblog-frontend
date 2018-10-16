@@ -20,6 +20,9 @@ import {
   createArticleRequest,
 } from 'store/actions/articles';
 import {
+  getCommentsRequest,
+} from 'store/actions/comments';
+import {
   LoadingContainer,
   MainContainer,
   ArticleContainer,
@@ -34,6 +37,7 @@ class Home extends Component {
     }).isRequired,
     getArticlesRequest: func.isRequired,
     createArticleRequest: func.isRequired,
+    getCommentsRequest: func.isRequired,
     isLoading: bool.isRequired,
     isSubmitting: bool.isRequired,
     lastPage: number.isRequired,
@@ -47,6 +51,15 @@ class Home extends Component {
         content: string,
       }),
     ),
+    comments: shape(
+      arrayOf(
+        shape({
+          id: int,
+          userID: string,
+          content: string,
+        }),
+      ),
+    ).isRequired,
   };
 
   static defaultProps = {
@@ -69,10 +82,13 @@ class Home extends Component {
   }
 
   handlePageClick = (data) => {
-    console.log(data.selected + 1);
     this.setState({ currentPage: data.selected + 1 }, () => {
       this.props.getArticlesRequest({ page: this.state.currentPage });
     });
+  }
+
+  onCommentClicked = (articleID, uri) => {
+    this.props.getCommentsRequest({ articleID, uri });
   }
 
   render() {
@@ -99,6 +115,8 @@ class Home extends Component {
               />
               <ArticleList
                 articles={this.props.articles}
+                onCommentClicked={this.onCommentClicked}
+                comments={this.props.comments}
               />
             </ArticleContainer>
           )
@@ -137,6 +155,7 @@ const mapStateToProps = state => ({
   isSubmitting: state.articles.isSubmitting,
   articles: state.articles.data,
   lastPage: state.articles.lastPage,
+  comments: state.comments.comments,
 });
 
 export default compose(
@@ -144,5 +163,6 @@ export default compose(
   connect(mapStateToProps, {
     getArticlesRequest,
     createArticleRequest,
+    getCommentsRequest,
   }),
 )(Home);

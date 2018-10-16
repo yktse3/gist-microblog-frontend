@@ -1,3 +1,5 @@
+import { async } from "rxjs/internal/scheduler/async";
+
 const HEADER_JSON = 'application/json';
 
 const defaultConfig = {
@@ -81,6 +83,21 @@ class API {
           accessToken: sessionStorage.getItem('accessToken'),
           title,
           content,
+        },
+      );
+      return response;
+    } catch (e) {
+      throw e;
+    }
+  }
+
+  getComments = async (uri) => {
+    try {
+      const response = await this.makeRequest(
+        'GET',
+        'comments',
+        {
+          uri,
         },
       );
       return response;
