@@ -2,7 +2,7 @@
 .loginBtn {
   box-sizing: border-box;
   position: relative;
-  /* width: 13em;  - apply for fixed size */
+  background: #d69d56;
   margin: 0.2em;
   padding: 0 15px 0 46px;
   text-align: left;
@@ -29,7 +29,7 @@
   outline: none;
 }
 .loginBtn:active {
-  background: #f1edf1;
+  background: #d69d56;
 }
 .loginBtn:hover {
   cursor: pointer;
