@@ -1,40 +1,83 @@
 import React, { Component } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import Article from 'components/Article';
-import { func, shape } from 'prop-types';
+import ArticleList from 'components/ArticleList';
+import {
+  func,
+  shape,
+  bool,
+  int,
+  arrayOf,
+  string,
+} from 'prop-types';
 import { withRouter } from 'react-router-dom';
+import Loader from 'react-loader-spinner';
+import { getArticlesRequest } from 'store/actions/articles';
+import {
+  LoadingContainer,
+} from './styles';
 
 class Home extends Component {
   static propTypes = {
     history: shape({
       push: func,
     }).isRequired,
+    getArticlesRequest: func.isRequired,
+    isLoading: bool.isRequired,
+    articles: arrayOf(
+      shape({
+        id: string,
+        title: string,
+        comments: int,
+        comments_url: string,
+        created_at: string,
+        content: string,
+      }),
+    ),
   };
 
   componentDidMount() {
     if (sessionStorage.getItem('accessToken') === null) {
       this.props.history.push('/Login');
     }
+    this.props.getArticlesRequest();
   }
 
   render() {
     return (
-      <Article
-        title="A title 2"
-        dateTime="2018/10/12 17:13:00"
-        content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat. Aliquam egestas, velit at condimentum placerat, sem sapien laoreet mauris, dictum porttitor lacus est nec enim. Vivamus feugiat elit lorem, eu porttitor ante ultrices id. Phasellus suscipit tellus ante, nec dignissim elit imperdiet nec. Nullam fringilla feugiat nisl. Ut pretium, metus venenatis dictum viverra, dui metus finibus enim, ac rhoncus sem lorem vitae mauris. Suspendisse ut venenatis libero. Suspendisse lorem felis, pretium in maximus id, tempor non ipsum"
-        numOfComment={0}
-      />
+      <div>
+        {
+          this.props.isLoading && (
+            <LoadingContainer>
+              <Loader
+                type="TailSpin"
+                color="#00BFFF"
+                height="100"
+                width="100"
+              />
+            </LoadingContainer>
+          )
+        }
+        {
+          !this.props.isLoading && (
+            <ArticleList
+              articles={this.props.articles}
+            />
+          )
+        }
+      </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  accessToken: state.auth.accessToken,
+  isLoading: state.articles.isLoading,
+  articles: state.articles.data,
 });
 
 export default compose(
   withRouter,
-  connect(mapStateToProps, {}),
+  connect(mapStateToProps, {
+    getArticlesRequest,
+  }),
 )(Home);

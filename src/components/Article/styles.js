@@ -12,6 +12,7 @@ export const Card = styled.div`
 
 export const ContentBlock = styled.span`
   margin-top: 10px;
+  white-space: pre;
 `;
 
 export const CommentText = styled.span`

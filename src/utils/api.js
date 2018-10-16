@@ -1,7 +1,4 @@
-const CLIENT_ID = 'b77a50cf0d2a3029972c';
-const CLIENT_SECRET = 'f29284e62d8c8bdd0fba0b304b7c5c243eec0d88';
-const HEADER_ACCEPT_JSON = 'application/json';
-const HEADER_ACCEPT_GITHUB_V3 = 'application/vnd.github.v3+json';
+const HEADER_JSON = 'application/json';
 
 const defaultConfig = {
   accessToken: null,
@@ -16,23 +13,26 @@ class API {
     this._config.accessToken = accessToken;
   }
 
-  getAccessToken = async ({ code }) => {
-    const url = 'http://localhost:3100/login';
-    const body = {
-      client_id: CLIENT_ID,
-      client_secret: CLIENT_SECRET,
-      code,
-    };
+  makeRequest = async (method, path, queryString, body) => {
+    let url = `http://localhost:3100/${path}`;
+    const urlParameters = queryString
+      ? Object.entries(queryString).map(e => e.join('=')).join('&')
+      : '';
+    if (urlParameters) {
+      url += `?${urlParameters}`;
+    }
 
     const config = {
-      method: 'POST',
+      method,
       headers: {
-        Accept: HEADER_ACCEPT_JSON,
-        'Content-Type': HEADER_ACCEPT_JSON,
-        'Access-Control-Allow-Origin': '*',
+        Accept: HEADER_JSON,
+        'Content-Type': HEADER_JSON,
       },
-      body: JSON.stringify(body),
     };
+
+    if (method !== 'GET' && body) {
+      config.body = JSON.stringify(body);
+    }
 
     try {
       const result = await fetch(url, config);
@@ -44,7 +44,25 @@ class API {
     } catch (e) {
       throw e;
     }
+  }
+
+  getAccessToken = async ({ code }) => {
+    try {
+      const response = await this.makeRequest('POST', 'login', {}, { code });
+      return response;
+    } catch (e) {
+      throw e;
+    }
   };
+
+  getGists = async () => {
+    try {
+      const response = await this.makeRequest('GET', 'articles', { accessToken: sessionStorage.getItem('accessToken') });
+      return response;
+    } catch (e) {
+      throw e;
+    }
+  }
 }
 
 export default new API();

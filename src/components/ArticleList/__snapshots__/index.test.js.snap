@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ArticleList render successfully 1`] = `
+Array [
+  <div
+    className="sc-bZQynM kaOVQO"
+  >
+    <div
+      className="sc-bxivhb kjsGUP"
+    >
+      <div
+        className="sc-bdVaJa bPGLpq"
+      >
+        <span
+          className="sc-bwzfXH dNCrpK"
+        >
+          A title
+        </span>
+        <span
+          className="sc-htpNat cUROdq"
+        >
+          2018/10/15 17:13:00
+        </span>
+      </div>
+      <span
+        className="sc-ifAKCX CnWSt"
+      >
+        Content
+      </span>
+      <span
+        className="sc-EHOje OnLaj"
+      >
+        1 comments
+      </span>
+    </div>
+  </div>,
+  <div
+    className="sc-bZQynM kaOVQO"
+  >
+    <div
+      className="sc-bxivhb kjsGUP"
+    >
+      <div
+        className="sc-bdVaJa bPGLpq"
+      >
+        <span
+          className="sc-bwzfXH dNCrpK"
+        >
+          A title 2
+        </span>
+        <span
+          className="sc-htpNat cUROdq"
+        >
+          2018/10/15 17:12:00
+        </span>
+      </div>
+      <span
+        className="sc-ifAKCX CnWSt"
+      >
+        ContentContentContentContent
+      </span>
+      <span
+        className="sc-EHOje OnLaj"
+      >
+        0 comments
+      </span>
+    </div>
+  </div>,
+]
+`;
