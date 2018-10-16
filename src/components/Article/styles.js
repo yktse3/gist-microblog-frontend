@@ -13,6 +13,8 @@ export const Card = styled.div`
 export const ContentBlock = styled.span`
   margin-top: 10px;
   white-space: pre;
+  overflow: auto;
+  max-height: 500px;
 `;
 
 export const CommentText = styled.span`

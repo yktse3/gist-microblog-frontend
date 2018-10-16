@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import ArticleList from 'components/ArticleList';
+import Editor from 'components/Editor';
 import {
   func,
   shape,
@@ -15,6 +16,8 @@ import Loader from 'react-loader-spinner';
 import { getArticlesRequest } from 'store/actions/articles';
 import {
   LoadingContainer,
+  MainContainer,
+  ArticleContainer,
 } from './styles';
 
 class Home extends Component {
@@ -36,6 +39,10 @@ class Home extends Component {
     ),
   };
 
+  static defaultProps = {
+    articles: [],
+  };
+
   componentDidMount() {
     if (sessionStorage.getItem('accessToken') === null) {
       this.props.history.push('/Login');
@@ -45,13 +52,13 @@ class Home extends Component {
 
   render() {
     return (
-      <div>
+      <MainContainer>
         {
           this.props.isLoading && (
             <LoadingContainer>
               <Loader
                 type="TailSpin"
-                color="#00BFFF"
+                color="#d69d56"
                 height="100"
                 width="100"
               />
@@ -60,12 +67,15 @@ class Home extends Component {
         }
         {
           !this.props.isLoading && (
-            <ArticleList
-              articles={this.props.articles}
-            />
+            <ArticleContainer>
+              <Editor />
+              <ArticleList
+                articles={this.props.articles}
+              />
+            </ArticleContainer>
           )
         }
-      </div>
+      </MainContainer>
     );
   }
 }
