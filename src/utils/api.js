@@ -55,9 +55,34 @@ class API {
     }
   };
 
-  getGists = async () => {
+  getGists = async (page) => {
     try {
-      const response = await this.makeRequest('GET', 'articles', { accessToken: sessionStorage.getItem('accessToken') });
+      const response = await this.makeRequest(
+        'GET',
+        'articles',
+        {
+          accessToken: sessionStorage.getItem('accessToken'),
+          page,
+        },
+      );
+      return response;
+    } catch (e) {
+      throw e;
+    }
+  }
+
+  createGist = async (title, content) => {
+    try {
+      const response = await this.makeRequest(
+        'POST',
+        'articles',
+        {},
+        {
+          accessToken: sessionStorage.getItem('accessToken'),
+          title,
+          content,
+        },
+      );
       return response;
     } catch (e) {
       throw e;

@@ -23,4 +23,24 @@ export const SubmitBtn = styled.button`
   padding: 10px 20px;
   align-self: flex-end;
   outline: none;
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+export const LoadingContainer = styled.div`
+  background: transparent;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -50px;
+  margin-top: -50px;
+`;
+
+export const Overlay = styled.div`
+  background: rgba(0,0,0,0.3);
+  position: absolute;
+  margin: -20px;
+  width: 100%;  
+  height: 100%;  
 `;

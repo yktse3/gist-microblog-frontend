@@ -15,7 +15,10 @@ const ArticleList = ({
 }) => (
   articles.map((article) => {
     return (
-      <ArticleContainer>
+      <ArticleContainer
+        key={`${article.id}_container`}
+        id={new Date().getTime()}
+      >
         <Article
           title={article.title}
           dateTime={article.created_at}

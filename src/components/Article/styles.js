@@ -8,6 +8,7 @@ export const Card = styled.div`
   flex-direction: column;
   height: 100%;
   justify-content: left;
+  position: relative;
 `;
 
 export const ContentBlock = styled.span`

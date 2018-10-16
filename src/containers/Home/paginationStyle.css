@@ -1,0 +1,37 @@
+.pagination {
+  background: white;
+  list-style-type: none;
+  display: flex;
+  padding: 0;
+}
+
+.pages, .page_prev, .page_next {
+  padding: 10px 15px;
+  background: #f1edf1;
+}
+
+.break {
+  padding-top: 10px;
+}
+
+.pages:hover, .page_prev:hover, .page_next:hover {
+  cursor: pointer;
+  background: #e5c092;
+}
+
+.active {
+  background: #d69d56;
+}
+
+.active:hover {
+  background: #d69d56;
+}
+
+.page_disabled:hover {
+  cursor: not-allowed;
+  background: transparent;
+}
+
+.page_link {
+  display: block;
+}

@@ -5,6 +5,8 @@ export const LoadingContainer = styled.div`
   top: 50%;
   left: 50%;
   background: #765b4a;
+  margin-left: -50px;
+  margin-top: -50px;
 `;
 
 export const MainContainer = styled.div`
@@ -15,4 +17,9 @@ export const MainContainer = styled.div`
 export const ArticleContainer = styled.div`
   background: #765b4a;
   padding-bottom: 20px;
+`;
+
+export const PaginationContainer = styled.div`
+  display: flex;
+  justify-content: center;
 `;
