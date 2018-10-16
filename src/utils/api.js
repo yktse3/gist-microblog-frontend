@@ -37,9 +37,12 @@ class API {
     try {
       const result = await fetch(url, config);
       const response = await result.json();
-      return response;
+      return {
+        statusCode: result.status,
+        body: response,
+      };
     } catch (e) {
-      return Promise.reject(e);
+      throw e;
     }
   };
 }

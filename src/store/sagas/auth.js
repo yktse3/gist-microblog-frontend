@@ -11,7 +11,11 @@ import { replace } from 'react-router-redux';
 
 export function* handleGetAccessToken({ payload: { code } }) {
   try {
-    const { access_token } = yield call(Api.getAccessToken, { code }); // eslint-disable-line camelcase
+    const { statusCode, body: { access_token } } = yield call(Api.getAccessToken, { code }); // eslint-disable-line camelcase
+    if (statusCode !== 200) {
+      throw new Error('Cannot get access token');
+    }
+
     Api.changeAccessToken(access_token);
     sessionStorage.setItem('accessToken', access_token);
     yield put(replace('/'));
