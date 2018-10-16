@@ -4,6 +4,7 @@ export const Title = styled.input`
   height: 33px;
   font-size: 20px;
   margin-bottom: 20px;
+  outline-color: #d69d56;
 `;
 
 export const Content = styled.textarea`
@@ -11,6 +12,7 @@ export const Content = styled.textarea`
   font-size: 20px;
   height: 160px;
   margin-bottom: 15px;
+  outline-color: #d69d56;
 `;
 
 export const SubmitBtn = styled.button`
@@ -20,4 +22,5 @@ export const SubmitBtn = styled.button`
   background: #d69d56;
   padding: 10px 20px;
   align-self: flex-end;
+  outline: none;
 `;
