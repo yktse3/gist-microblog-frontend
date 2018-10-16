@@ -1,6 +1,5 @@
 import {
   GET_ACCESS_TOKEN_REQUEST,
-  GET_ACCESS_TOKEN_SUCCESS,
 } from 'store/actions/auth';
 import {
   takeLatest,
@@ -14,12 +13,7 @@ export function* handleGetAccessToken({ payload: { code } }) {
   try {
     const { access_token } = yield call(Api.getAccessToken, { code }); // eslint-disable-line camelcase
     Api.changeAccessToken(access_token);
-    yield put({
-      type: GET_ACCESS_TOKEN_SUCCESS,
-      payload: {
-        accessToken: access_token,
-      },
-    });
+    sessionStorage.setItem('accessToken', access_token);
     yield put(replace('/'));
   } catch (e) {
     console.error(e);

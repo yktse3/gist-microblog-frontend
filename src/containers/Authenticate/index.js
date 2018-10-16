@@ -1,17 +1,9 @@
-import React, { Component } from 'react';
-import { compose } from 'redux';
-import { connect } from 'react-redux';
+import React from 'react';
 
-import { getAccessTokenRequest } from 'store/actions/auth';
+const Authenticate = () => (
+  <div>
+    Authenticating...
+  </div>
+);
 
-class Authenticate extends Component {
-  render() {
-    return <div>Authenticating...</div>;
-  }
-}
-
-export default compose(
-  connect(null, {
-    getAccessTokenRequest,
-  }),
-)(Authenticate);
+export default Authenticate;

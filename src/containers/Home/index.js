@@ -2,19 +2,20 @@ import React, { Component } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import Article from 'components/Article';
-import { string } from 'prop-types';
+import { func, shape } from 'prop-types';
+import { withRouter } from 'react-router-dom';
 
 class Home extends Component {
   static propTypes = {
-    accessToken: string,
-  };
-
-  static defaultProps = {
-    accessToken: null,
+    history: shape({
+      push: func,
+    }).isRequired,
   };
 
   componentDidMount() {
-    console.log(this.props.accessToken);
+    if (sessionStorage.getItem('accessToken') === null) {
+      this.props.history.push('/Login');
+    }
   }
 
   render() {
@@ -34,5 +35,6 @@ const mapStateToProps = state => ({
 });
 
 export default compose(
+  withRouter,
   connect(mapStateToProps, {}),
 )(Home);

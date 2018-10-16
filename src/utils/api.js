@@ -5,7 +5,7 @@ const HEADER_ACCEPT_GITHUB_V3 = 'application/vnd.github.v3+json';
 
 const defaultConfig = {
   accessToken: null,
-}
+};
 
 class API {
   constructor(config = defaultConfig) {
@@ -23,7 +23,6 @@ class API {
       client_secret: CLIENT_SECRET,
       code,
     };
-    console.log(body);
 
     const config = {
       method: 'POST',
