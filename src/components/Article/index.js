@@ -56,6 +56,7 @@ class Article extends Component {
       content,
       numOfComment,
     } = this.props;
+
     return (
       <div>
         <Card>

@@ -7,6 +7,9 @@ import {
   CREATE_ARTICLE_SUCCESS,
   CREATE_ARTICLE_FAIL,
 } from 'store/actions/articles';
+import {
+  CREATE_COMMENTS_SUCCESS,
+} from 'store/actions/comments';
 
 const defaultState = {
   isLoading: false,
@@ -53,6 +56,21 @@ export default (state = defaultState, action) => {
       return {
         ...state,
         isSubmitting: false,
+      };
+    case CREATE_COMMENTS_SUCCESS:
+      return {
+        ...state,
+        data: [
+          ...state.data,
+          state.data.map((article) => {
+            if (article.id === payload.comment.articleID) {
+              const newArticle = article;
+              newArticle.comments += 1;
+              return newArticle;
+            }
+            return article;
+          }),
+        ],
       };
     default:
       return state;
