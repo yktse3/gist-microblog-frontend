@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Comment render successfully 1`] = `
+<div
+  className="sc-htpNat eCCHOJ"
+>
+  <span
+    className="sc-bdVaJa hQekPs"
+  >
+    username replied:
+  </span>
+  <span
+    className="sc-bwzfXH jmosDp"
+  >
+    comment content
+  </span>
+</div>
+`;

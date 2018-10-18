@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NewComment render successfully when enabled 1`] = `
+<div
+  className="sc-bZQynM bTIDzm"
+>
+  <textarea
+    autoComplete="off"
+    className="sc-EHOje fwxGOl sc-bwzfXH jGzomT"
+    name="content"
+    onChange={[Function]}
+    placeholder="Comment"
+    value=""
+  />
+  <button
+    className="sc-htpNat eTyvdL"
+    onClick={[Function]}
+  >
+    Submit
+  </button>
+</div>
+`;
