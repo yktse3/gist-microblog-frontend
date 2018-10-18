@@ -23,3 +23,20 @@ export const PaginationContainer = styled.div`
   display: flex;
   justify-content: center;
 `;
+
+export const LogoutContainer = styled.div`
+  display: flex;
+  margin-bottom: 10px;
+  background-image: linear-gradient(to right, #e5c092, #d69d56);
+  padding: 5px 0;
+`;
+
+export const LogoutButton = styled.button`
+  margin-left: auto;
+  border: none;
+  background: transparent;
+  color: #2c252e;
+  &:hover {
+    cursor: pointer;
+  }
+`;

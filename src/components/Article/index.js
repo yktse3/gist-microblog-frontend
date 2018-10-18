@@ -9,6 +9,7 @@ import {
 } from 'prop-types';
 import ArticleTitle from 'components/ArticleTitle';
 import CommentList from 'components/CommentList';
+import NewComment from 'components/NewComment';
 import { noop } from 'utils/helpers';
 import {
   Card,
@@ -31,7 +32,8 @@ class Article extends Component {
         userID: string,
         content: string,
       }),
-    )
+    ),
+    onCommentSubmit: func.isRequired,
   };
 
   static defaultProps = {
@@ -71,6 +73,10 @@ class Article extends Component {
             />
           )
         }
+        <NewComment
+          onSubmit={this.props.onCommentSubmit}
+          articleID={this.props.articleID}
+        />
       </div>
     );
   }

@@ -16,6 +16,7 @@ const ArticleList = ({
   articles,
   onCommentClicked,
   comments,
+  onCommentSubmit,
 }) => (
   articles.map((article) => {
     return (
@@ -33,6 +34,7 @@ const ArticleList = ({
           commentURL={article.comments_url}
           onCommentClicked={onCommentClicked}
           comments={comments[article.id]}
+          onCommentSubmit={onCommentSubmit}
         />
       </ArticleContainer>
     );
@@ -60,6 +62,7 @@ ArticleList.propTypes = {
       }),
     ),
   ).isRequired,
+  onCommentSubmit: func.isRequired,
 };
 
 ArticleList.defaultProps = {

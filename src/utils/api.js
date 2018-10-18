@@ -105,6 +105,24 @@ class API {
       throw e;
     }
   }
+
+  createComment = async (articleID, comment) => {
+    try {
+      const response = await this.makeRequest(
+        'POST',
+        'comments',
+        {},
+        {
+          accessToken: sessionStorage.getItem('accessToken'),
+          id: articleID,
+          content: comment,
+        },
+      );
+      return response;
+    } catch (e) {
+      throw e;
+    }
+  }
 }
 
 export default new API();

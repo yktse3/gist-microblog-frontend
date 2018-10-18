@@ -21,13 +21,17 @@ import {
 } from 'store/actions/articles';
 import {
   getCommentsRequest,
+  createCommentsRequest,
 } from 'store/actions/comments';
 import {
   LoadingContainer,
   MainContainer,
   ArticleContainer,
   PaginationContainer,
+  LogoutButton,
+  LogoutContainer,
 } from './styles';
+
 require('./paginationStyle.css');
 
 class Home extends Component {
@@ -38,6 +42,7 @@ class Home extends Component {
     getArticlesRequest: func.isRequired,
     createArticleRequest: func.isRequired,
     getCommentsRequest: func.isRequired,
+    createCommentsRequest: func.isRequired,
     isLoading: bool.isRequired,
     isSubmitting: bool.isRequired,
     lastPage: number.isRequired,
@@ -91,6 +96,15 @@ class Home extends Component {
     this.props.getCommentsRequest({ articleID, uri });
   }
 
+  onCommentSubmit = (articleID, comment) => {
+    this.props.createCommentsRequest({ articleID, comment });
+  }
+
+  onLogout = () => {
+    sessionStorage.removeItem('accessToken');
+    this.props.history.replace('/Login');
+  }
+
   render() {
     return (
       <MainContainer>
@@ -108,6 +122,17 @@ class Home extends Component {
         }
         {
           !this.props.isLoading && (
+            <LogoutContainer>
+              <LogoutButton
+                onClick={this.onLogout}
+              >
+                Logout
+              </LogoutButton>
+            </LogoutContainer>
+          )
+        }
+        {
+          !this.props.isLoading && (
             <ArticleContainer>
               <Editor
                 onSubmit={this.onSubmit}
@@ -117,6 +142,7 @@ class Home extends Component {
                 articles={this.props.articles}
                 onCommentClicked={this.onCommentClicked}
                 comments={this.props.comments}
+                onCommentSubmit={this.onCommentSubmit}
               />
             </ArticleContainer>
           )
@@ -156,6 +182,7 @@ const mapStateToProps = state => ({
   articles: state.articles.data,
   lastPage: state.articles.lastPage,
   comments: state.comments.comments,
+  isSubmittingComment: state.comments.isSubmitting,
 });
 
 export default compose(
@@ -164,5 +191,6 @@ export default compose(
     getArticlesRequest,
     createArticleRequest,
     getCommentsRequest,
+    createCommentsRequest,
   }),
 )(Home);
