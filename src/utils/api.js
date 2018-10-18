@@ -1,5 +1,3 @@
-import { async } from "rxjs/internal/scheduler/async";
-
 const HEADER_JSON = 'application/json';
 
 const defaultConfig = {

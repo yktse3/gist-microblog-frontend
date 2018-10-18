@@ -3,67 +3,115 @@
 exports[`ArticleList render successfully 1`] = `
 Array [
   <div
-    className="sc-bZQynM kaOVQO"
+    className="sc-fjdhpX jTFEQs"
   >
-    <div
-      className="sc-bxivhb kjsGUP"
-    >
+    <div>
       <div
-        className="sc-bdVaJa bPGLpq"
+        className="sc-EHOje jiRcjx"
       >
-        <span
-          className="sc-bwzfXH dNCrpK"
+        <div
+          className="sc-bdVaJa bPGLpq"
         >
-          A title
+          <span
+            className="sc-bwzfXH dNCrpK"
+          >
+            A title
+          </span>
+          <span
+            className="sc-htpNat cUROdq"
+          >
+            2018/10/15 17:13:00
+          </span>
+        </div>
+        <span
+          className="sc-bZQynM dLZvNn"
+        >
+          Content
         </span>
         <span
-          className="sc-htpNat cUROdq"
+          className="sc-gzVnrw kDPufM"
+          onClick={[Function]}
         >
-          2018/10/15 17:13:00
+          1 comments
         </span>
       </div>
-      <span
-        className="sc-ifAKCX gdOviX"
+      <div
+        className="sc-htoDjs eolgBN"
+      />
+      <div
+        className="sc-EHOje jiRcjx"
       >
-        Content
-      </span>
-      <span
-        className="sc-EHOje OnLaj"
-      >
-        1 comments
-      </span>
+        <textarea
+          autoComplete="off"
+          className="sc-jTzLTM gKGFVP sc-iwsKbI iCkmLb"
+          name="content"
+          onChange={[Function]}
+          placeholder="Comment"
+          value=""
+        />
+        <button
+          className="sc-gZMcBi bMlNzm"
+          onClick={[Function]}
+        >
+          Submit
+        </button>
+      </div>
     </div>
   </div>,
   <div
-    className="sc-bZQynM kaOVQO"
+    className="sc-fjdhpX jTFEQs"
   >
-    <div
-      className="sc-bxivhb kjsGUP"
-    >
+    <div>
       <div
-        className="sc-bdVaJa bPGLpq"
+        className="sc-EHOje jiRcjx"
       >
-        <span
-          className="sc-bwzfXH dNCrpK"
+        <div
+          className="sc-bdVaJa bPGLpq"
         >
-          A title 2
+          <span
+            className="sc-bwzfXH dNCrpK"
+          >
+            A title 2
+          </span>
+          <span
+            className="sc-htpNat cUROdq"
+          >
+            2018/10/15 17:12:00
+          </span>
+        </div>
+        <span
+          className="sc-bZQynM dLZvNn"
+        >
+          ContentContentContentContent
         </span>
         <span
-          className="sc-htpNat cUROdq"
+          className="sc-gzVnrw kDPufM"
+          onClick={[Function]}
         >
-          2018/10/15 17:12:00
+          0 comments
         </span>
       </div>
-      <span
-        className="sc-ifAKCX gdOviX"
+      <div
+        className="sc-htoDjs eolgBN"
+      />
+      <div
+        className="sc-EHOje jiRcjx"
       >
-        ContentContentContentContent
-      </span>
-      <span
-        className="sc-EHOje OnLaj"
-      >
-        0 comments
-      </span>
+        <textarea
+          autoComplete="off"
+          className="sc-jTzLTM gKGFVP sc-iwsKbI iCkmLb"
+          name="content"
+          onChange={[Function]}
+          placeholder="Comment"
+          value=""
+        />
+        <button
+          className="sc-gZMcBi bMlNzm"
+          onClick={[Function]}
+        >
+          Submit
+        </button>
+      </div>
     </div>
   </div>,
 ]

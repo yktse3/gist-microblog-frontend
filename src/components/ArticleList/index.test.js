@@ -1,5 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+import { noop } from 'utils/helpers';
 import ArticleList from './index';
 
 describe('ArticleList', () => {
@@ -13,7 +14,7 @@ describe('ArticleList', () => {
             content: 'Content',
             comments: 1,
             id: '1',
-            commentURL: 'http://whatever.com/comment/1',
+            comments_url: 'http://whatever.com/comment/1',
           },
           {
             title: 'A title 2',
@@ -21,10 +22,12 @@ describe('ArticleList', () => {
             content: 'ContentContentContentContent',
             comments: 0,
             id: '2',
-            commentURL: 'http://whatever.com/comment/2',
+            comments_url: 'http://whatever.com/comment/2',
           },
-        ]
-        }
+        ]}
+        comments={{}}
+        onCommentClicked={noop}
+        onCommentSubmit={noop}
       />,
     );
 

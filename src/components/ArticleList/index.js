@@ -22,7 +22,6 @@ const ArticleList = ({
     return (
       <ArticleContainer
         key={`${article.id}_container`}
-        id={new Date().getTime()}
       >
         <Article
           title={article.title}
@@ -61,13 +60,14 @@ ArticleList.propTypes = {
         content: string,
       }),
     ),
-  ).isRequired,
+  ),
   onCommentSubmit: func.isRequired,
 };
 
 ArticleList.defaultProps = {
   articles: [],
   onCommentClicked: noop,
+  comments: {},
 };
 
 export default ArticleList;

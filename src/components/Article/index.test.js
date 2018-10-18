@@ -1,5 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+import { noop } from 'utils/helpers';
 import Article from './index';
 
 describe('Article', () => {
@@ -10,6 +11,12 @@ describe('Article', () => {
         dateTime="2018/10/15 17:13:00"
         content="Content"
         numOfComment={1}
+        key="1"
+        articleID="1"
+        commentURL="http://whatever.com/comment/1"
+        onCommentClicked={noop}
+        comments={[]}
+        onCommentSubmit={noop}
       />,
     );
 
